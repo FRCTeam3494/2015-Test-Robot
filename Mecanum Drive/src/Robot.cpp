@@ -1,5 +1,8 @@
 #include "WPILib.h"
+#include "Can_Stuffs\Can_Data.h"
+#include <iostream>
 
+using namespace std;
 /**
  * This is a demo program showing how to use Mecanum control with the RobotDrive class.
  */
@@ -14,8 +17,12 @@ class Robot: public SampleRobot
 
     const static int joystickChannel	= 0;
 
+    Can_Data* Can;
+
 	RobotDrive robotDrive;	// robot drive system
 	Joystick stick;			// only joystick
+
+
 
 public:
 	Robot() :
@@ -26,6 +33,7 @@ public:
 		robotDrive.SetExpiration(0.1);
 		robotDrive.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);	// invert the left side motors
 		robotDrive.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);	// you may need to change or remove this to match your robot
+		Can = new Can_Data;
 	}
 
 	/**
@@ -33,6 +41,8 @@ public:
 	 */
 	void OperatorControl()
 	{
+		cout << "Hello World";
+
 		robotDrive.SetSafetyEnabled(false);
 		while (IsOperatorControl() && IsEnabled())
 		{
@@ -42,6 +52,10 @@ public:
 
 			Wait(0.005); // wait 5ms to avoid hogging CPU cycles
 		}
+
+		Can->updateData();
+
+
 	}
 
 };
