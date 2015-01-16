@@ -5,7 +5,9 @@
  *      Author: Aeson
  */
 #include "Can_Data.h"
+#include <iostream>
 
+using namespace std;
 Can_Data::Can_Data()
 {
 	Power = new PowerDistributionPanel;
@@ -17,7 +19,8 @@ void Can_Data::updateData()
 {
 	voltage = Power->GetVoltage();
 
-	cout << voltage;
+	cout << voltage << endl;
+
 
 }
 

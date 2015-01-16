@@ -41,7 +41,7 @@ public:
 	 */
 	void OperatorControl()
 	{
-		cout << "Hello World";
+
 
 		robotDrive.SetSafetyEnabled(false);
 		while (IsOperatorControl() && IsEnabled())
@@ -51,9 +51,11 @@ public:
 			robotDrive.MecanumDrive_Cartesian(stick.GetX(), stick.GetY(), stick.GetZ());
 
 			Wait(0.005); // wait 5ms to avoid hogging CPU cycles
+
+			Can->updateData();
 		}
 
-		Can->updateData();
+
 
 
 	}
