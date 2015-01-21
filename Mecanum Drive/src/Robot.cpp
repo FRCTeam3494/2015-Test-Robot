@@ -17,27 +17,31 @@ class Robot: public SampleRobot
 
     const static int joystickChannel	= 0;
 
+    //SmartDashboard* Smart;
     Can_Data* Can;
     Encoder encoder_1;
 	RobotDrive robotDrive;	// robot drive system
 	Joystick stick; // only joystick
-	double Period = 0;
+	bool Period = 0;
+	DigitalInput encoder_digital;
 
 
 public:
-	Robot() :
+	Robot() : encoder_1(0,1,false, Encoder::k1X),
 			robotDrive(frontLeftChannel, rearLeftChannel,
 					   frontRightChannel, rearRightChannel),	// these must be initialized in the same order
-			stick(joystickChannel),encoder_1(0,1,false, Encoder::k4X)								// as they are declared above.
+			stick(joystickChannel), encoder_digital(1)					// as they are declared above.
 	{
 		robotDrive.SetExpiration(0.1);
 		robotDrive.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);	// invert the left side motors
 		robotDrive.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);	// you may need to change or remove this to match your robot
 		Can = new Can_Data;
-
+SmartDashboard::init();
 		encoder_1.SetSamplesToAverage(5);
 		encoder_1.SetDistancePerPulse(1.00 / 360.0 * 2.0 *3.1415 * 1.5);
 		encoder_1.SetMinRate(1.0);
+		encoder_1.SetReverseDirection(true);
+		encoder_1.SetMaxPeriod(1);
 
 
 	}
@@ -57,8 +61,13 @@ public:
 			robotDrive.MecanumDrive_Cartesian(stick.GetX(), stick.GetY(), stick.GetZ());
 
 			Wait(0.005); // wait 5ms to avoid hogging CPU cycles
-			Period = encoder_1.GetDistance();
 
+			Period = encoder_digital.Get();
+
+			if (stick.GetRawButton(1) == TRUE)
+						{
+				SmartDashboard::PutNumber( "Encoder_?" , Period );
+						}
 			Can->updateData();
 		}
 

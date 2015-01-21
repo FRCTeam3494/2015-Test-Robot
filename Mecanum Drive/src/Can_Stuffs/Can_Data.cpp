@@ -19,7 +19,7 @@ void Can_Data::updateData()
 {
 	voltage = Power->GetVoltage();
 
-	cout << voltage << endl;
+	//cout << voltage << endl;
 
 
 }
