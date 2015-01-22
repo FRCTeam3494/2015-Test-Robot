@@ -62,7 +62,7 @@ SmartDashboard::init();
 
 			Wait(0.005); // wait 5ms to avoid hogging CPU cycles
 
-			Period = encoder_digital.Get();
+			Period = encoder_1.Get();
 
 			if (stick.GetRawButton(1) == TRUE)
 						{
