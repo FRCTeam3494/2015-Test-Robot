@@ -24,7 +24,7 @@ class Robot: public SampleRobot
 	Joystick stick; // only joystick
 	bool Period = 0;
 	DigitalInput encoder_digital;
-
+	double Period_2 = 0;
 
 public:
 	Robot() : encoder_1(0,1,false, Encoder::k1X),
@@ -63,10 +63,12 @@ SmartDashboard::init();
 			Wait(0.005); // wait 5ms to avoid hogging CPU cycles
 
 			Period = encoder_digital.Get();
+			Period_2 = encoder_1.Get();
 
-			if (stick.GetRawButton(1) == TRUE)
-						{
+			if (stick.GetRawButton(1) == TRUE)     // Take out of if statement next !!!!!!!!!!!!!!!!!!
+			{
 				SmartDashboard::PutNumber( "Encoder_?" , Period );
+				SmartDashboard::PutNumber( "Encoder" , Period_2 );
 						}
 			Can->updateData();
 		}
