@@ -10,26 +10,12 @@ using namespace std;
 class Robot: public SampleRobot
 {
 
-    // Channels for the wheels
-    const static int frontLeftChannel	= 2;
-    const static int rearLeftChannel	= 3;
-    const static int frontRightChannel	= 1;
-    const static int rearRightChannel	= 0;
-
-    const static int joystickChannel	= 0;
-
     	CANTalon* talons[5];
-
-    	/*CANTalon* Talon_1 ;
-    	CANTalon* Talon_2 ;
-    	CANTalon* Talon_3 ;
-    	CANTalon* Talon_4 ;*/
 
 
     //SmartDashboard* Smart;
     Can_Data* Can;
     Encoder encoder_1;
-	RobotDrive* robotDrive;	// robot drive system
 	Joystick* stick; // only joystick
 	bool Period = 0;
 	DigitalInput encoder_digital;
@@ -39,11 +25,10 @@ class Robot: public SampleRobot
 
 
 public:
-	Robot() :  encoder_1(0,1,false, Encoder::k1X),
-				// these must be initialized in the same order
-	encoder_digital(1)					// as they are declared above.
+	Robot():
+		encoder_1(0,1,false, Encoder::k1X),
+		encoder_digital(1)
 	{
-
 		for(int i=1;i<5;i++)
 		{
 			talons[i] = new CANTalon(i);
@@ -94,11 +79,6 @@ public:
 			canData();
 			//Talon_1->Set(stick->GetY());
 			Wait(0.005); // wait 5ms to avoid hogging CPU cycles
-
-<<<<<<< HEAD
-=======
-			Period = encoder_1.Get();
->>>>>>> origin/master
 
 			//Period = encoder_digital.Get();
 

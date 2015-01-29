@@ -6,7 +6,7 @@
  */
 #include "Can_Data.h"
 #include <iostream>
-
+#include "WPILib.h"
 using namespace std;
 Can_Data::Can_Data()
 {
