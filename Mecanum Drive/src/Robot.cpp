@@ -4,7 +4,6 @@
 
 using namespace std;
 /**
- * This is a demo program showing how to use Mecanum control with the RobotDrive class.
  */
 class Robot: public SampleRobot
 {

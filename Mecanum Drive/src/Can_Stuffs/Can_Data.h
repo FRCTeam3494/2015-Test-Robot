@@ -10,7 +10,6 @@
 
 #include "PowerDistributionPanel.h"
 #include <iostream>
-#include
 
 using namespace std;
 class Can_Data
