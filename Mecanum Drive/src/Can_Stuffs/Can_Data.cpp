@@ -19,8 +19,8 @@ void Can_Data::updateData()
 {
 	voltage = Power->GetVoltage();
 
-	//cout << voltage << endl;
 
+	SmartDashboard::PutNumber( "Encoder_?" , voltage );
 
 }
 

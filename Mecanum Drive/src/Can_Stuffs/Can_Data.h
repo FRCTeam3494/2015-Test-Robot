@@ -8,9 +8,9 @@
 #ifndef SRC_CAN_STUFFS_CAN_DATA_H_
 #define SRC_CAN_STUFFS_CAN_DATA_H_
 
-#include "PowerDistributionPanel.h"
+//#include "PowerDistributionPanel.h"
 #include <iostream>
-#include
+#include "WPIlib.h"
 
 using namespace std;
 class Can_Data
