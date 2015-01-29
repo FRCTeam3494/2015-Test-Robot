@@ -10,7 +10,11 @@
 
 //#include "PowerDistributionPanel.h"
 #include <iostream>
+<<<<<<< HEAD
 #include "WPIlib.h"
+=======
+
+>>>>>>> origin/master
 
 using namespace std;
 class Can_Data

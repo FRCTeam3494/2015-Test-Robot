@@ -95,6 +95,10 @@ public:
 			//Talon_1->Set(stick->GetY());
 			Wait(0.005); // wait 5ms to avoid hogging CPU cycles
 
+<<<<<<< HEAD
+=======
+			Period = encoder_1.Get();
+>>>>>>> origin/master
 
 			//Period = encoder_digital.Get();
 
